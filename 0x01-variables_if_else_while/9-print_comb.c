@@ -16,12 +16,12 @@ for (i = '0'; i <= '9'; i++)
 {
 putchar(i);
 {
-if (i != '9')
+if (i != 57)
 
-putchar(',');
-putchar(' ');
+putchar(44);
+putchar(32);
 }
 }
-putchar('\n');
+putchar(10);
 return (0);
 }
