@@ -19,7 +19,7 @@ for (m = '0'; m <= '9'; m++)
 {
 for (n = '0'; n <= '9'; n++)
 {
-if (i < m && i < n)
+if (i < m && m < n)
 {
 putchar(i);
 putchar(m);
