@@ -25,16 +25,16 @@ putchar(i);
 putchar(m);
 putchar(n);
 
-if (i != '7')
+if (i < 55 || m < 56 || n < 57)
 {
-putchar(',');
-putchar(' ');
+putchar(44);
+putchar(32);
 }
 }
 }
 }
 }
-putchar('\n');
+putchar(10);
 return (0);
 }
 
