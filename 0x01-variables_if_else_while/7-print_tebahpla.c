@@ -12,10 +12,12 @@
 int main(void)
 {
 
-int a;
-for (a = 'z'; a >= 'a'; a--)
+int i = 122;
+while (i > 96)
 {
-putchar(a);
+putchar(i);
+--i;
 }
+putchar(10);
 return (0);
 }
