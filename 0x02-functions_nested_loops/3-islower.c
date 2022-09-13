@@ -5,6 +5,8 @@
 *
 * description: A function that checks for lowercase character
 *
+* @c: the int value
+*
 * Return: void
 *
 */
@@ -12,12 +14,12 @@
 int _islower(int c)
 
 {
-int i;
+int i = 'a';
 for (i = 'a'; i <= 'z'; i++)
 {
 if (c == i)
 {
-return (0);
+return (1);
 }
 }
 return (0);
