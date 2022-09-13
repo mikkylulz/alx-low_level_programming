@@ -9,12 +9,22 @@
 int main(void)
 {
 int i;
-int j;
-for (i = 0; i < 1024; i++)
+unsigned long n = 0, m = 1, o;
+for (i = 0; i < 50; i++)
+
 {
-if ((i % 3 == 0) || (i % 5 == 0))
-j += i;
+o = n + m;
+printf("%lu", o);
+
+n = m;
+
+m = o;
+
+if (i == 49)
+
+printf("\n");
+else
+printf(", ");
 }
-printf("%d\n", j);
 return (0);
 }
