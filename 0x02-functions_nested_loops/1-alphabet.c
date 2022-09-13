@@ -9,7 +9,8 @@
 * Return: void
 */
 
-void print_alphabet(void);
+void print_alphabet(void)
+int main()
 {
 
 int i;
