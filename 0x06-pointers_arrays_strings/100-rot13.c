@@ -13,6 +13,8 @@ char a[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 char b[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 for (i = 0; *(s + i); i++)
 {
+for (k = 0; k < 52; k++)
+{
 if (a[k] == *(s + i))
 {
 (s + i) = b[k];
