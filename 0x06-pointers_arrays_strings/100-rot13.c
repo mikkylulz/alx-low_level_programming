@@ -8,16 +8,16 @@
 */
 char *rot13(char *s)
 {
-int i, k;
+int i, j;
 char a[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 char b[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 for (i = 0; *(s + i); i++)
 {
-for (k = 0; k < 52; k++)
+for (j = 0; j < 52; j++)
 {
-if (a[k] == *(s + i))
+if (a[j] == *(s + i))
 {
-(s + i) = b[k];
+*(s + i) = b[j];
 break;
 }
 }
