@@ -1,42 +1,48 @@
-#include "main.h"
 #include <stdio.h>
 
 /**
-* print_buffer - Prints a buffer
-* @b: char
-* @size: in
-* Return:  Return void
-*/
+ * print_buffer - prints buffer of a char string
+ * @b: buffer to print
+ * @size: size of buffer
+ * Return: nothing
+ */
 
 void print_buffer(char *b, int size)
 {
-	int x, i;
-	for (x = 0; x < size; x += 10)
-	{
-		printf("%08x: ", x);
-		for (i = 0; i < 10; i++)
-		{
-			if ((i + x) >= size)
-				printf("  ");
-			else
-				printf("%02x", *(b + i + x));
-			if ((i % 2) != 0 && i != 0)
-				printf(" ");
-		}
-		for (i = 0; i < 10; i++)
-		{
-			if ((i + x) >= size)
-				break;
-			else if (*(b + i + x) >= 31 &&
-				 *(b + i + x) <= 126)
-				printf("%c", *(b + i + x));
-			else
-				printf(".");
-		}
-		if (x >= size)
-			continue;
-		printf("\n");
-	}
+	int i, j;
+
 	if (size <= 0)
 		printf("\n");
+	else
+	{
+		for (i = 0; i < size; i += 10)
+		{
+			printf("%08x: ", i);
+			j = 0;
+			while (j < 10)
+			{
+				if (j % 2 == 0 && j != 0)
+					printf(" ");
+				if ((j + i) > size - 1)
+				{
+					printf("  ");
+				}
+				else
+					printf("%.2x", b[i + j]);
+				j++;
+			}
+			printf(" ");
+			j = 0;
+			while (j < 10)
+			{
+				if ((j + i) > size - 1)
+					break;
+				if (b[j + i] <= 31 || b[j + 1] >= '~')
+					b[j + i] = '.';
+				putchar(b[j + i]);
+				j++;
+			}
+			printf("\n");
+		}
+	}
 }
