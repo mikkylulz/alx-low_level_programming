@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * print_number - function to print int using _putchar
+ * print_number - a function that prints an integer.
  * @n: input integer
- * Return: no return.
+ * Return: nothing
  */
 
 void print_number(int n)
 {
-	unsigned int m, d, count;
+	unsigned int m, d, len;
 
 	if (n < 0)
 	{
@@ -21,18 +21,16 @@ void print_number(int n)
 	}
 
 	d = m;
-	count = 1;
-
-
+	len = 1;
 
 	while (d > 9)
 	{
 		d /= 10;
-		count *= 10;
+		len *= 10;
 	}
 
-	for (; count >= 1; count /= 10)
+	for (; len >= 1; len /= 10)
 	{
-		_putchar(((m / count) % 10) + 48);
+		_putchar(((m / len) % 10) + 48);
 	}
 }
