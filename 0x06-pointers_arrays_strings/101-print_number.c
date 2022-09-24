@@ -5,6 +5,7 @@
  *
  * @num: int to print
  */
+
 void print_number(int num)
 {
 	unsigned int d = 10, n;
