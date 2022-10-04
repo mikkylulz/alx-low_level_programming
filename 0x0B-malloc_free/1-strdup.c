@@ -23,6 +23,6 @@ if (duplicate == NULL)
 return (NULL);
 for (i = 0; str[i]; i++)
 duplicate[i] = str[i];
-duplicate[k] = '\0';
+duplicate[j] = '\0';
 return (duplicate);
 }
