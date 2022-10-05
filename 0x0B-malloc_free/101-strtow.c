@@ -1,105 +1,78 @@
 #include "main.h"
-#include <stdio.h>
+#include <stdlib.h>
 
 /**
-* wordcount - get word count from string
-*             without spaces
+* wrdcnt - counts the number of words in a string
 *
-* @str: string to count words present
+* @s: the string to search
 *
-* Return: The number of words
+* Return: int of number of words
+*/
+
+int wrdcnt(char *s)
+{
+	int i, n = 0;
+
+	for (i = 0; s[i]; i++)
+	{
+		if (s[i] == ' ')
+		{
+			if (s[i + 1] != ' ' && s[i + 1] != '\0')
+				n++;
+		}
+		else if (i == 0)
+			n++;
+	}
+	n++;
+	return (n);
+}
+
+/**
+* strtow - splits a string into words
+* @str: string
+* Return: pointer to an array of strings
 */
 
 char **strtow(char *str)
 {
-char **split;
-int i, j = 0, temp = 0, size = 0, words = num_words(str);
+	int i, j, k, l, n = 0, ch = 0;
+	char **x;
 
-if (words == 0)
-return (NULL);
-split = (char **) malloc(sizeof(char *) * (words + 1));
-if (split != NULL)
-{
-for (i = 0; i <= len(str) && words; i++)
-{
-if ((str[i] != ' ') && (str[i] != '\0'))
-size++;
-else if (((str[i] == ' ') || (str[i] == '\0')) && i && (str[i - 1] != ' '))
-{
-split[j] = (char *) malloc(sizeof(char) * size + 1);
-if (split[j] != NULL)
-{
-while (temp < size)
-{
-split[j][temp] = str[(i - size) +temp];
-temp++;
-}
-split[j][temp] = '\0';
-size = temp = 0;
-j++;
-}
-else
-{
-while (j-- >= 0)
-free(split[j]);
-free(split);
-return (NULL);
-}
-}
-}
-split[words] = NULL;
-return (split);
-}
-else
-return (NULL);
-}
-
-
-/**
-* num_words - counts the number of words in str
-* @str: string to be used
-*
-* Return: number of words
-*/
-
-int num_words(char *str)
-{
-int i = 0, words = 0;
-
-while (i <= len(str))
-{
-if ((str[i] != ' ') && (str[i] != '\0'))
-{
-i++;
-}
-else if (((str[i] == ' ') || (str[i] == '\0')) && i && (str[i - 1] != ' '))
-{
-words += 1;
-i++;
-}
-else
-{
-i++;
-}
-}
-return (words);
-}
-
-/**
-* len - returns length of str
-* @str: string to be counted
-*
-* Return: length of the string
-*/
-
-int len(char *str)
-{
-int len = 0;
-
-if (str != NULL)
-{
-while (str[len])
-len++;
-}
-return (len);
+	if (str == NULL || *str == '\0')
+		return (NULL);
+	n = wrdcnt(str);
+	if (n == 1)
+		return (NULL);
+	 x = (char **)malloc(n * sizeof(char *));
+	if (x == NULL)
+		return (NULL);
+	x[n - 1] = NULL;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
+		{
+			for (j = 1; str[i + j] != ' ' && str[i + j]; j++)
+				;
+			j++;
+			x[ch] = (char *)malloc(j * sizeof(char));
+			j--;
+			if (x[ch] == NULL)
+			{
+				for (k = 0; k < ch; k++)
+					free(x[k]);
+				free(x[n - 1]);
+				free(x);
+				return (NULL);
+			}
+			for (l = 0; l < j; l++)
+				x[ch][l] = str[i + l];
+			x[ch][l] = '\0';
+			ch++;
+			i += j;
+		}
+		else
+			i++;
+	}
+	return (x);
 }
