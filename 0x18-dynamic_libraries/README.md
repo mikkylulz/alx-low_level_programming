@@ -1,1 +1,1 @@
-project
+Dynamic library project
